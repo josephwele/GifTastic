@@ -29,7 +29,7 @@ function btnCreate(){
     if(event.target.tagName =="BUTTON" && !(event.target.textContent==="Submit"))
     {
     var q = event.target.textContent;
-    var queryUrl = `http://api.giphy.com/v1/gifs/search?q=${q}&api_key=sDGIvQPjRZcVOq4NnMW7QFAQNZ0ocf08&limit=5"&rating=g`;
+    var queryUrl = `https://api.giphy.com/v1/gifs/search?q=${q}&api_key=sDGIvQPjRZcVOq4NnMW7QFAQNZ0ocf08&limit=5"&rating=g`;
     //checking if the window support fetch 
       //perform ajax request 
       fetch(queryUrl,{
