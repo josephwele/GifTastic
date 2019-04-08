@@ -19,9 +19,50 @@ function btnCreate(){
     document.querySelector("#btns").append(buttons);
     buttons.textContent = list[i];
     // add bootstrap class to the buttons
-    buttons.classList.add("btn","btn-primary","px-3","m-3");
+    buttons.classList.add("btn","api","btn-primary","px-3","m-3");
     //increment counter 
     i++;
     document.getElementById("inpt").value = "";
     }
-    //reset the input form 
+   document.querySelector(".container-fluid").addEventListener("click",function(event){
+     //checking if the clicked is the animal button
+    if(event.target.tagName =="BUTTON" && !(event.target.textContent==="Submit"))
+    {
+    var q = event.target.textContent;
+    var queryUrl = `http://api.giphy.com/v1/gifs/search?q=${q}&api_key=sDGIvQPjRZcVOq4NnMW7QFAQNZ0ocf08&limit=5"&rating=g`;
+    //checking if the window support fetch 
+      //perform ajax request 
+      fetch(queryUrl,{
+        method: "GET"
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(response){
+        var results = response.data;
+        //creating a div element 
+        var divRes = document.createElement("div");
+        divRes.classList.add("row");
+        document.getElementById("container").append(divRes);
+        for(let obj of results){
+          //save the rate to a variable
+          var rate = obj.rating;
+          //create a paragraph 
+          var para = document.createElement("p");
+          // providing inner text to the paragraph 
+          para.innerText = `Rating:${rate}`;
+          //creat a video tag 
+          var vide = document.createElement("video");
+          vide.classList.add("thumbnail");
+          //provide source for the video 
+          vide.setAttribute("src",obj.images.preview_gif.url);
+          //appending the paragraph and the video 
+          divRes.appendChild(para);
+          divRes.appendChild(vide);
+
+
+        }
+
+      })
+    }
+    } )
