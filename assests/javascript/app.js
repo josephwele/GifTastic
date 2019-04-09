@@ -49,6 +49,8 @@ function btnCreate(){
           var rate = obj.rating;
           //create a paragraph 
           var para = document.createElement("p");
+          //center the text 
+          para.classList.add("text-center");
           // providing inner text to the paragraph 
           para.innerText = `Rating:${rate}`;
           //creat a video tag 
