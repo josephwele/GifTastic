@@ -53,7 +53,7 @@ function btnCreate(){
           para.innerText = `Rating:${rate}`;
           //creat a video tag 
           var vide = document.createElement("video");
-          vide.classList.add("thumbnail");
+          vide.classList.add("thumbnail","img-fluid");
           //provide source for the video 
           vide.setAttribute("src",obj.images.preview_gif.url);
           //appending the paragraph and the video 
